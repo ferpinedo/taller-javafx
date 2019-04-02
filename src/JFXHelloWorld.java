@@ -1,8 +1,17 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.HBoxBuilder;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -91,8 +100,79 @@ public class JFXHelloWorld extends Application {
     Scene scene = new Scene(new Pane(new Label("hola"))); // As parameter you must pass the root JavaFX GUI component that is to act as the root view to be displayed inside the Scene.
     primaryStage.setScene(scene);
 
+
     // It is possible to set the mouse cursor of a JavaFX Scene. The mouse cursor is the little icon that is being displayed at the location of the mouse cursor (pointer).
     scene.setCursor(Cursor.OPEN_HAND);
+
+
+
+    /*  Pane    */
+    VBox pane = new VBox();
+    pane.setAlignment(Pos.CENTER);
+    pane.setSpacing(10);
+    pane.setPadding(new Insets(10));
+
+
+    /*  Label    */
+    Label label = new Label("Inserta tu nombre aquí: ");
+    pane.getChildren().add(label);
+//    Scene scene = new Scene(label, 200, 100);
+
+    /*  TextField    */
+    TextField textField = new TextField();
+    pane.getChildren().add(textField);
+
+
+    /*  Button    */
+    Button button = new Button("Ok");
+
+    // Las expresiones lambda son funciones anónimas, es decir, funciones que no necesitan una clase.
+    button.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        label.setText("¡Gracias!");
+        System.out.println(textField.getText());
+//        textField.setVisible(false);
+//        button.setVisible(false);
+      }
+    });
+
+//    button.setOnAction(value ->  {
+//      label.setText("¡Gracias!");
+//    });
+
+    pane.getChildren().add(button);
+
+    // Mnemonic:  A mnemonic is a keyboard key which activates the button when pressed in conjunction with the ALT key.   MNEMOTECNICO
+    //    button.setMnemonicParsing(true);
+    //    button.setText("_Click");
+
+//    button.setMinWidth()
+//    button.setMaxWidth()
+//    button.setPrefWidth()
+//
+//    button.setMinHeight()
+//    button.setMaxHeight()
+//    button.setPrefHeight()
+//
+//    button.setMinSize()
+//    button.setMaxSize()
+//    button.setPrefSize()
+
+//    The methods setMinSize(), setMaxSize() and setPrefSize() sets both width and height for the button in a single call. Thus, these methods takes both a width and a height parameter. For instance, calling
+//    button.setMaxSize(100, 200);
+
+//    Styles
+//    button1.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;")
+
+//    Tooltip
+//    button.setTooltip(new Tooltip("Presiona este botón para guardar tu nombre"));
+
+    // Visible
+
+
+    Scene basicWindow = new Scene(pane);
+    primaryStage.setScene(basicWindow);
 
 
   }
