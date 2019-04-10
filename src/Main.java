@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainController  extends Application {
+public class Main extends Application {
 
   public static void main(String[] args) {
     launch(args);
@@ -13,7 +13,7 @@ public class MainController  extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    URL fxml = getClass().getClassLoader().getResource("resources/views/SignIn.fxml");
+    URL fxml = getClass().getClassLoader().getResource("resources/views/SignUp.fxml");
 
     FXMLLoader fxmlLoader = new FXMLLoader(fxml);
     Parent parent = fxmlLoader.load();

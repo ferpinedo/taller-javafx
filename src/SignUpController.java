@@ -3,7 +3,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
-public class SignInController {
+public class SignUpController {
+
   @FXML
   private TextField txtName;
 
@@ -28,15 +29,7 @@ public class SignInController {
         "Materiales",
         "Mecatrónica"
     );
-    radioBtnFemale.setOnMouseReleased(event -> {
-      radioBtnMale.setSelected(false);
-      radioBtnFemale.setSelected(true);
-    } );
-
-    radioBtnMale.setOnMouseReleased(event -> {
-      radioBtnMale.setSelected(true);
-      radioBtnFemale.setSelected(false);
-    } );
+    
   }
 
 }

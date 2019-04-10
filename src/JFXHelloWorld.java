@@ -21,20 +21,7 @@ import javafx.stage.StageStyle;
 public class JFXHelloWorld extends Application {
 
   public static void main(String[] args) {
-    /*
-     * Launch a standalone application. This method is typically called
-     * from the main method(). It must not be called more than once or an
-     * exception will be thrown.
-     * This is equivalent to launch(TheClass.class, args) where TheClass is the
-     * immediately enclosing class of the method that called launch. It must
-     * be a subclass of Application or a RuntimeException will be thrown.
-     *
-     * <p>
-     * The launch method does not return until the application has exited,
-     * either via a call to Platform.exit or all of the application windows
-     * have been closed.
-     */
-    launch(args); // llama start
+    launch(args);
   }
 
   @Override
