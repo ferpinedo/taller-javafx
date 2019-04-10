@@ -3,6 +3,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 public class SignUpController {
 
@@ -19,13 +20,15 @@ public class SignUpController {
   private PasswordField txtRepeatPassword;
 
   @FXML
-  private ComboBox comboBox;
+  private ComboBox<String> comboBox;
 
   @FXML
   private RadioButton radioBtnFemale;
 
   @FXML
   private RadioButton radioBtnMale;
+
+  private ToggleGroup toggleGroup;
 
   public void initialize() {
     comboBox.getItems().addAll(
@@ -34,12 +37,25 @@ public class SignUpController {
         "Mecatrónica"
     );
 
+    toggleGroup = new ToggleGroup();
+    radioBtnMale.setToggleGroup(toggleGroup);
+    radioBtnFemale.setToggleGroup(toggleGroup);
   }
 
   public void handleDone() {
     String name = txtName.getText();
-    System.out.println(name);
-    System.out.println(comboBox.getValue());
+    String controlNumber = txtControlNumber.getText();
+    String password = txtPassword.getText();
+    String repeatPassword = txtRepeatPassword.getText();
+    String career = comboBox.getValue();
+    RadioButton selectedRadioBtn =
+        (RadioButton) toggleGroup.getSelectedToggle();
+    String sex = selectedRadioBtn.getText();
+
+    Student student = new Student(name, controlNumber,
+                                  password, sex, career);
+
+    System.out.println(student);
   }
 
 }
