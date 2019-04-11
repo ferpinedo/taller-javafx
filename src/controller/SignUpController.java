@@ -33,6 +33,8 @@ public class SignUpController {
 
   private ToggleGroup toggleGroup;
 
+  private StudentsController studentsController;
+
   public void initialize() {
     comboBox.getItems().addAll(
         "Sistemas",
@@ -43,6 +45,9 @@ public class SignUpController {
     toggleGroup = new ToggleGroup();
     radioBtnMale.setToggleGroup(toggleGroup);
     radioBtnFemale.setToggleGroup(toggleGroup);
+
+    radioBtnFemale.setSelected(true);
+    comboBox.getSelectionModel().select(0);
   }
 
   public void handleDone() {
@@ -55,10 +60,31 @@ public class SignUpController {
         (RadioButton) toggleGroup.getSelectedToggle();
     String sex = selectedRadioBtn.getText();
 
+    if (!password.equals(repeatPassword)) {
+      txtPassword.setStyle("-fx-text-box-border: red");
+      txtRepeatPassword.setStyle("-fx-text-box-border: red");
+      return;
+    }
+
+    try {
+      Integer.parseInt(controlNumber);
+    } catch (NumberFormatException e) {
+      txtControlNumber.setStyle("-fx-text-box-border: red");
+      return;
+    }
+
+
+
     Student student = new Student(name, controlNumber,
                                   password, sex, career);
+
+    studentsController.getStudentsTable().getItems().add(student);
 
     System.out.println(student);
   }
 
+
+  public void setStudentsController(StudentsController studentsController) {
+    this.studentsController = studentsController;
+  }
 }
