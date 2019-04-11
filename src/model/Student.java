@@ -1,3 +1,5 @@
+package model;
+
 public class Student {
 
   private String name;
@@ -62,7 +64,7 @@ public class Student {
 
   @Override
   public String toString() {
-    return "Student{" +
+    return "model.Student{" +
         "name='" + name + '\'' +
         ", controlNumber='" + controlNumber + '\'' +
         ", password='" + password + '\'' +
