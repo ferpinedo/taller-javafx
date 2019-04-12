@@ -120,6 +120,7 @@ public class StudentsController {
 
     }
 
+    barChart.getData().clear();
     barChart.getData().add(maleBars);
     barChart.getData().add(femaleBars);
   }
