@@ -6,16 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Student;
 
-import javax.swing.*;
+import javax.swing.plaf.basic.BasicGraphicsUtils;
 
 public class StudentsController {
 
@@ -23,7 +21,16 @@ public class StudentsController {
   private TableView<Student> studentsTable;
 
   @FXML
-  private AnchorPane viewPane;
+  private AnchorPane tablePane;
+
+  @FXML
+  private AnchorPane barChartPane;
+
+  @FXML
+  private CheckMenuItem btnTable;
+
+  @FXML
+  private CheckMenuItem btnChart;
 
   public void initialize() {
     TableColumn<Student, String> columnaNombre =
@@ -77,11 +84,16 @@ public class StudentsController {
   }
 
   public void handleTableView() {
+    barChartPane.setVisible(false);
+    tablePane.setVisible(true);
 
+    btnChart.setSelected(false);
   }
 
   public void handleChartView() {
-
+    barChartPane.setVisible(true);
+    tablePane.setVisible(false);
+    btnTable.setSelected(false);
   }
 
   public void handleDeleteStudent() {
