@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentsController">
    <children>
-      <TableView fx:id="studentsTable" layoutX="56.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0" />
-      <Label layoutX="30.0" layoutY="28.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="Alumnos agregados" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0" />
+      <AnchorPane fx:id="tablePane" layoutX="30.0" layoutY="40.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <TableView fx:id="studentsTable" layoutY="40.0" prefHeight="270.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold;" text="Alumnos agregados" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
       <Button layoutX="518.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleNewStudent" text="Nuevo alumno" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="30.0" />
+      <AnchorPane fx:id="barChartPane" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold;" text="Estadísticas" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BarChart fx:id="barChart" layoutX="-102.0" layoutY="13.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+      <MenuBar layoutX="64.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Vistas">
+            <items>
+                  <CheckMenuItem fx:id="btnTable" mnemonicParsing="false" onAction="#handleTable" selected="true" text="Tabla" />
+                  <CheckMenuItem fx:id="btnBarChart" mnemonicParsing="false" onAction="#handleBarChart" text="Gráfica" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opciones">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="Información" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

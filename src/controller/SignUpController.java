@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import model.Student;
 
 public class SignUpController {
@@ -37,9 +38,14 @@ public class SignUpController {
 
   public void initialize() {
     comboBox.getItems().addAll(
-        "Sistemas",
-        "Materiales",
-        "Mecatrónica"
+            "Sistemas",
+            "Mecatrónica",
+            "Mecánica",
+            "Gestión Empresarial",
+            "Materiales",
+            "Industrial",
+            "Electrónica",
+            "Eléctrica"
     );
 
     toggleGroup = new ToggleGroup();
@@ -79,8 +85,10 @@ public class SignUpController {
                                   password, sex, career);
 
     studentsController.getStudentsTable().getItems().add(student);
+    studentsController.fillUpBarChart();
 
     System.out.println(student);
+    ((Stage)txtName.getScene().getWindow()).close();
   }
 
 
