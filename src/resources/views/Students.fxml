@@ -11,15 +11,19 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentsController">
    <children>
-      <TableView fx:id="studentsTable" layoutX="56.0" layoutY="85.0" prefHeight="265.0" prefWidth="540.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="85.0" />
-      <Label layoutX="30.0" layoutY="28.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="Alumnos agregados" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane fx:id="viewPane" layoutX="30.0" layoutY="40.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <TableView fx:id="studentsTable" layoutY="45.0" prefHeight="265.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold;" text="Alumnos agregados" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
       <Button layoutX="518.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleNewStudent" text="Nuevo alumno" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="30.0" />
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Vistas">
                <items>
                   <CheckMenuItem mnemonicParsing="false" onAction="#handleTableView" selected="true" text="Tabla" />
-                  <CheckMenuItem mnemonicParsing="false" onAction="#handleChartTable" text="Gráfica" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#handleChartView" text="Gráfica" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Opciones">
