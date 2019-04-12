@@ -24,6 +24,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Opciones">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleGenerateStudents" text="Generar estudiantes de prueba" />
               <MenuItem mnemonicParsing="false" onAction="#handleDeleteStudent" text="Borrar último estudiante" />
                   <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Cerrar" />
             </items>

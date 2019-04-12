@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Student;
+import util.StudentGenerator;
 
 import javax.swing.plaf.basic.BasicGraphicsUtils;
 
@@ -144,6 +145,11 @@ public class StudentsController {
 
   public TableView<Student> getStudentsTable() {
     return studentsTable;
+  }
+
+  public void handleGenerateStudents() {
+    studentsTable.getItems().addAll(StudentGenerator.getRandomStudents());
+    fillUpChart();
   }
 
   public void handleTableView() {
