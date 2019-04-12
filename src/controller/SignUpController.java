@@ -85,6 +85,7 @@ public class SignUpController {
                                   password, sex, career);
 
     studentsController.getStudentsTable().getItems().add(student);
+    studentsController.fillUpChart();
 
     System.out.println(student);
 
