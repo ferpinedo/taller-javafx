@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import model.Student;
 
 public class SignUpController {
@@ -81,6 +82,8 @@ public class SignUpController {
     studentsController.getStudentsTable().getItems().add(student);
 
     System.out.println(student);
+
+    ((Stage)studentsController.getStudentsTable().getScene().getWindow()).close();
   }
 
 
