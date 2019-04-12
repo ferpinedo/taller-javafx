@@ -6,17 +6,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Student;
+
+import javax.swing.*;
 
 public class StudentsController {
 
   @FXML
   private TableView<Student> studentsTable;
+
+  @FXML
+  private AnchorPane viewPane;
 
   public void initialize() {
     TableColumn<Student, String> columnaNombre =
@@ -67,6 +74,32 @@ public class StudentsController {
 
   public TableView<Student> getStudentsTable() {
     return studentsTable;
+  }
+
+  public void handleTableView() {
+
+  }
+
+  public void handleChartView() {
+
+  }
+
+  public void handleDeleteStudent() {
+    studentsTable.getItems().remove(studentsTable.getItems().size() - 1);
+  }
+
+  public void handleAbout() {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Información");
+    alert.setHeaderText("Taller de JavaFX");
+    alert.setContentText("Proyecto desarrollado por Fernando Pinedo \n\r " +
+            "Versión 0.5");
+
+    alert.showAndWait();
+  }
+
+  public void handleClose() {
+    ((Stage)studentsTable.getScene().getWindow()).close();
   }
 
 }
