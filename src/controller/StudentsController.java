@@ -2,10 +2,16 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +37,15 @@ public class StudentsController {
 
   @FXML
   private CheckMenuItem btnChart;
+
+  @FXML
+  private BarChart barChart;
+
+  @FXML
+  private CategoryAxis xAxis;
+
+  @FXML
+  private NumberAxis yAxis;
 
   public void initialize() {
     TableColumn<Student, String> columnaNombre =
@@ -58,6 +73,54 @@ public class StudentsController {
     studentsTable.getColumns().add(columnaNumControl);
     studentsTable.getColumns().add(columnaSexo);
 
+
+    // BarChart
+    xAxis.setLabel("Carreras");
+    yAxis.setLabel("Alumnos");
+
+    fillUpChart();
+
+  }
+
+  public void fillUpChart() {
+    XYChart.Series maleBars = new XYChart.Series();
+    maleBars.setName("Hombres");
+
+    XYChart.Series femaleBars = new XYChart.Series();
+    femaleBars.setName("Mujeres");
+
+    String[] carreras = {
+            "Sistemas",
+            "Mecatrónica",
+            "Mecánica",
+            "Gestión Empresarial",
+            "Materiales",
+            "Industrial",
+            "Electrónica",
+            "Eléctrica"
+    };
+
+    List<Student> students = studentsTable.getItems();
+
+    for (String career: carreras) {
+      int maleStudents = 0;
+      int femaleStudents = 0;
+      for (Student student: students) {
+        if (student.getCareer().equals(career)) {
+          if (student.getSex().equals("Femenino")) {
+            femaleStudents++;
+          } else {
+            maleStudents++;
+          }
+        }
+      }
+      maleBars.getData().add(new XYChart.Data<>(career, maleStudents));
+      femaleBars.getData().add(new XYChart.Data<>(career, femaleStudents));
+
+    }
+
+    barChart.getData().add(maleBars);
+    barChart.getData().add(femaleBars);
   }
 
   public void handleNewStudent() {
@@ -94,6 +157,10 @@ public class StudentsController {
     barChartPane.setVisible(true);
     tablePane.setVisible(false);
     btnTable.setSelected(false);
+
+
+
+
   }
 
   public void handleDeleteStudent() {
