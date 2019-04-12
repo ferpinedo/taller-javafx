@@ -38,9 +38,14 @@ public class SignUpController {
 
   public void initialize() {
     comboBox.getItems().addAll(
-        "Sistemas",
-        "Materiales",
-        "Mecatrónica"
+            "Sistemas",
+            "Mecatrónica",
+            "Mecánica",
+            "Gestión Empresarial",
+            "Materiales",
+            "Industrial",
+            "Electrónica",
+            "Eléctrica"
     );
 
     toggleGroup = new ToggleGroup();
