@@ -7,7 +7,7 @@ import model.Student;
 
 public class StudentGenerator {
 
-  public List<Student> getRandomStudents() {
+  public static List<Student> getRandomStudents() {
 
     String[] nombres = {
         "Juan",
